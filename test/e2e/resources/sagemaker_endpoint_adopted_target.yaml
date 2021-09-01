@@ -7,6 +7,7 @@ spec:
     nameOrID: $RESOURCE_ID
     additionalKeys:
       serviceNamespace: sagemaker
+      scalableDimension: "sagemaker:variant:DesiredInstanceCount"
   kubernetes:
     group: applicationautoscaling.services.k8s.aws
     kind: ScalableTarget

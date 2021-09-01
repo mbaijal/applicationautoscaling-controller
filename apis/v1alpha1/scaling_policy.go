@@ -184,6 +184,9 @@ type ScalingPolicyStatus struct {
 	// The CloudWatch alarms created for the target tracking scaling policy.
 	// +kubebuilder:validation:Optional
 	Alarms []*Alarm `json:"alarms,omitempty"`
+	// The Amazon Resource Name (ARN) of the resulting scaling policy.
+	// +kubebuilder:validation:Optional
+	PolicyARN *string `json:"policyARN,omitempty"`
 }
 
 // ScalingPolicy is the Schema for the ScalingPolicies API

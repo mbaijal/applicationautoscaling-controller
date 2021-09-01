@@ -9,25 +9,25 @@ operations:
     operation_type: Delete
     resource_name: ScalableTarget
   DescribeScalableTargets:
-    primary_identifier_field_name: ResourceID
+    primary_identifier_field_name: ResourceId
+    custom_check_required_fields_missing_method: customCheckRequiredFieldsMissingMethod
   DescribeScalingPolicies:
-    primary_identifier_field_name: ResourceID
+    primary_identifier_field_name: ResourceId
 resources:
   ScalableTarget:
     hooks:
         sdk_read_many_post_build_request:
           code: rm.customDescribeScalableTarget(ctx, r, input)
+          #template_path: hooks/scalable_target/sdk_read_many_post_build_request.go.tpl
         delta_pre_compare:
           code: customSetDefaults(a, b)
     fields:
-      ResourceID:
+      ResourceId:
         is_name: true
   ScalingPolicy:
     fields:
-      ResourceID:
+      ResourceId:
         is_name: true
-      PolicyARN: 
-        is_arn: true
 ignore:
     resource_names:
       - ScheduledAction
